@@ -1,0 +1,15 @@
+CONSULTA PUNTO DE CONEXIÓN
+DATOS CLIENTE
+NIC
+DATOS TRANSFORMADOR
+COORDENADAS GEOGRAFICAS
+CONSULTA SOLICITUD
+DATOS SOLICITUD
+Numero
+Email
+Mapa
+Combinaciones de teclas
+Datos del mapa ©2026 Google, INEGI
+Términos
+Esta página no puede cargar Google Maps correctamente.
+¿Eres el propietario de este sitio web?	Aceptar

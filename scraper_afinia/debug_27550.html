@@ -1,0 +1,1340 @@
+
+    
+        <div id="BuscarPuntoConexion">
+            <div class="col-md-3">
+                <div id="divBuscar" class="panel panel-default">
+                    <div class="panel-heading">
+                        CONSULTA PUNTO DE CONEXIÓN
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="font-size: 1.0em;">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                    DATOS CLIENTE
+                                </a>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="input-group">
+                                        <label for="TxtBNic" class="col-md-3 control-label">NIC</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="TxtBNic" maxlength="7" class="form-control solo-numero">
+                                        </div>
+                                          <span class="input-group-btn" style="padding: 0px; ">
+                                              <button id="BtnNic" class="btn btn-default" type="button" style="padding: 9px 9px; "><i class="fa fa-search" style="padding: 3px 3px; "></i>
+                                                </button>
+                                          </span>
+                                    </div>
+                                </div> 
+                            </div> 
+                            <div class="panel-heading" style="font-size: 1.0em;">
+                                <a data-toggle="collapse" data-parent="#accordion" class="Acollapse" href="#collapse2">
+                                    DATOS TRANSFORMADOR
+                                </a>
+                            </div> 
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group form-group-sm">
+                                        <div style="float: left;">
+                                            <div class="radio radio-inline">
+                                                <label style="font-size: 12px;">
+                                                    <input type="radio" checked="" name="Opttrafo" id="Opttrafo1" value="1" required=""><span class="circle"></span><span class="check"></span>
+                                                    Matricula
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div style="float: left;">
+                                            <div class="radio radio-inline">
+                                                <label style="font-size: 12px;">
+                                                    <input type="radio" name="Opttrafo" id="Opttrafo2" value="2" required=""><span class="circle"></span><span class="check"></span>
+                                                    Codigo
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                            <input type="text" id="Txttransformador" class="form-control">
+                                        
+                                        <span class="input-group-btn" style="padding: 0px; ">
+                                            <button id="Btntransformador" class="btn btn-default" type="button" style="padding: 9px 9px;"><i class="fa fa-search" style="padding: 3px 3px;"></i>
+                                            </button>
+                                        </span>                                        
+                                    </div>
+                                    
+                                </div> 
+                            </div>                            
+                            <div class="panel-heading" style="font-size: 1.0em;">
+                                <a data-toggle="collapse" data-parent="#accordion" class="Acollapse" href="#collapse3">
+                                    COORDENADAS GEOGRAFICAS
+                                </a>
+                            </div> 
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group ">
+                                        <label for="txtLatitud" class="col-md-3 control-label">Latitud</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control solo-decimal" id="txtLatitud">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="txtLongitud" class="col-md-3 control-label">Longitud</label>
+                                        
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control solo-decimal" id="txtLongitud">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                      
+                                        <span class="input-group-btn">
+                                            <button id="BtnLatLong" class="btn btn-default" type="button" style="padding: 9px 9px;"><i class="fa fa-search" style="padding: 3px 3px;"></i>
+                                            </button>
+                                        </span>                                        
+                                    </div>
+                                </div>
+                            </div> 
+
+                    </div>
+                    </div> 
+       
+                    </div>
+                </div>
+
+                <div id="divResultados" class="panel panel-default" style="display:none;">
+                    <div class="panel-heading">
+                        <button type="button" class="close" data-dismiss="modal" onclick="javascript:CerrarListadoPuntos();" aria-hidden="true">×</button>
+                        RESULTADOS
+                    </div>
+                    <div class="panel-body">
+                        <table id="tableResultados" class="table table-striped table-hover ">
+                            <tbody>
+
+                            </tbody>
+                        </table>     
+                    </div> 
+                </div> 
+                <div id="divPuntoconexion" class="panel panel-default" style="display:none;">
+                    <div class="panel-heading">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="javascript:CerrarInfoPunto();">×</button>
+                        PUNTO
+                    </div>
+                    <div class="panel-body">
+                        <table id="tableInfoPunto" class="table table-striped table-hover ">
+                            <tbody>
+                                <tr>
+                                  <td>CÓDIGO<br> <span id="strCodigo"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>MATRICULA<br> <span id="strMatricula"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>DIRECCIÓN<br> <span id="strDireccion"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>LONGITUD<br> <span id="strLongitud"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>LATITUD<br> <span id="strLatitud"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>POTENCIA NOMINAL(KVA)<br> <span id="strPotenciaNominal"></span> </td>
+                                  
+                                </tr>
+                             
+                                <tr>
+                                  <td>KVA SOLICITADOS<br> <span id="strKVASol"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>KVA APROBADOS<br> <span id="strKVAApro"></span> </td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>PROPIEDAD<br> <span id="strPropiedad"></span> </td>
+                                  
+                                </tr>
+                                
+                            </tbody>
+                            
+                        </table> 
+                            <div class="form-group form-group-sm">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button id="BtnIngresarSol" class="btn btn-primary">CREAR SOLICITUD<div class="ripple-container"></div></button>
+                                </div>
+                            </div>
+                    </div> 
+                </div> 
+
+                <div id="divBuscar" class="panel panel-default">
+                    <div class="panel-heading">
+                        CONSULTA SOLICITUD 
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content" id="accordion1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="font-size: 1.0em;">
+                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapse11" class="" aria-expanded="true">
+                                    DATOS SOLICITUD
+                                </a>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                <div class="panel-body">
+                                    <div class="form-group ">
+                                        <label for="txtBsNumero" class="col-md-3 control-label">Numero</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control solo-numero" id="txtBsNumero">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="txtBsEmailSol" class="col-md-3 control-label">Email</label>
+                                        
+                                        <div class="col-md-9">
+                                            <input type="email" class="form-control" id="txtBsEmailSol">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                      
+                                        <span class="input-group-btn">
+                                            <button id="BtnBuscarSol" class="btn btn-default" type="button" style="padding: 9px 9px;"><i class="fa fa-search" style="padding: 3px 3px;"></i>
+                                            </button>
+                                        </span>                                        
+                                    </div>
+                                    
+                                </div> 
+                            </div>                            
+                            
+                    </div>
+                    </div> 
+       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Mapa
+                    </div>
+                    <div class="panel-body">
+                        <div id="div_maps" style="width: 100%; height: 700px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div><button draggable="false" aria-label="Combinaciones de teclas" title="Combinaciones de teclas" type="button" style="background: none transparent; display: block; border: none; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; z-index: 1000002; outline-offset: 3px; right: 0px; bottom: 0px; transform: translateX(100%);"></button></div><div tabindex="0" aria-label="Mapa" aria-roledescription="mapa" role="region" aria-describedby="D7D29F93-4EAC-41B0-AD3F-6EFA7FBFE9A8" style="position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"><div id="D7D29F93-4EAC-41B0-AD3F-6EFA7FBFE9A8" style="display: none;"><div class="LGLeeN-keyboard-shortcuts-view"><table><tbody><tr><td><kbd aria-label="Flecha hacia la izquierda">←</kbd></td><td aria-label="Mover a la izquierda.">Mover a la izquierda</td></tr><tr><td><kbd aria-label="Flecha hacia la derecha">→</kbd></td><td aria-label="Mover a la derecha.">Mover a la derecha</td></tr><tr><td><kbd aria-label="Flecha hacia arriba">↑</kbd></td><td aria-label="Mover hacia arriba.">Mover hacia arriba</td></tr><tr><td><kbd aria-label="Flecha hacia abajo">↓</kbd></td><td aria-label="Mover hacia abajo.">Mover hacia abajo</td></tr><tr><td><kbd>+</kbd></td><td aria-label="Ampliar.">Ampliar</td></tr><tr><td><kbd>-</kbd></td><td aria-label="Reducir.">Reducir</td></tr><tr><td><kbd>Inicio</kbd></td><td aria-label="Saltar hacia la izquierda un 75 %.">Saltar hacia la izquierda un 75 %</td></tr><tr><td><kbd>Fin</kbd></td><td aria-label="Saltar hacia la derecha un 75 %.">Saltar hacia la derecha un 75 %</td></tr><tr><td><kbd>Re Pág</kbd></td><td aria-label="Saltar hacia arriba un 75 %.">Saltar hacia arriba un 75 %</td></tr><tr><td><kbd>Av Pág</kbd></td><td aria-label="Saltar hacia abajo un 75 %.">Saltar hacia abajo un 75 %</td></tr></tbody></table></div></div></div><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; width: 100%; will-change: transform; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 993; transform: matrix(1, 0, 0, 1, -241, -66);"><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 993; transform: matrix(1, 0, 0, 1, -241, -66);"><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i39!3i59!4i256!2m3!1e0!2sm!3i770532958!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=76093" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i39!3i60!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=910" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i37!3i59!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=112470" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i38!3i60!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=81547" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i37!3i60!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=31113" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i38!3i59!4i256!2m3!1e0!2sm!3i770532958!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=25659" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i39!3i61!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=36450" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i38!3i61!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=117087" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i37!3i61!4i256!2m3!1e0!2sm!3i770533462!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=66653" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i36!3i61!4i256!2m3!1e0!2sm!3i770533888!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=33848" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i36!3i60!4i256!2m3!1e0!2sm!3i770533888!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=129379" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i36!3i58!4i256!2m3!1e0!2sm!3i770532958!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=20322" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i36!3i59!4i256!2m3!1e0!2sm!3i770533888!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=79665" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i37!3i58!4i256!2m3!1e0!2sm!3i770532958!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=70756" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i38!3i58!4i256!2m3!1e0!2sm!3i770532958!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=121190" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i7!2i39!3i58!4i256!2m3!1e0!2sm!3i770532970!2m3!1e2!6m1!3e5!3m18!2ses!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&amp;key=AIzaSyCUjZOuqdp59hWaYBwSqmL3z2-1pukETLw&amp;token=67577" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; will-change: transform; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><slot></slot><span id="DA7969BD-C5CE-49AB-9833-AAFF30047A7F" aria-live="polite" style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; overflow: hidden; clip-path: inset(100%); white-space: nowrap; border: 0px;"></span></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div class="gm-style-moc" style="z-index: 4; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; transition-property: opacity, display; transition-behavior: allow-discrete; opacity: 0; display: none;"><p class="gm-style-mot"></p></div></div><iframe aria-hidden="true" frameborder="0" tabindex="-1" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none; opacity: 0;"></iframe><div style="pointer-events: none; width: 100%; height: 100%; box-sizing: border-box; position: absolute; z-index: 1000002; opacity: 0; border: 2px solid rgb(26, 115, 232);"></div><div></div><div></div><div></div><div></div><div><button draggable="false" aria-label="Cambiar a la vista en pantalla completa" title="Cambiar a la vista en pantalla completa" type="button" aria-pressed="false" class="gm-control-active gm-fullscreen-control" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; border-radius: 2px; height: 40px; width: 40px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; overflow: hidden; top: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2018%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%200v6h2V2h4V0zm16%200h-4v2h4v4h2V0zm0%2016h-4v2h6v-6h-2zM2%2012H0v6h6v-2H2z%22/%3E%3C/svg%3E" alt="" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2018%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%200v6h2V2h4V0zm16%200h-4v2h4v4h2V0zm0%2016h-4v2h6v-6h-2zM2%2012H0v6h6v-2H2z%22/%3E%3C/svg%3E" alt="" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2018%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%200v6h2V2h4V0zm16%200h-4v2h4v4h2V0zm0%2016h-4v2h6v-6h-2zM2%2012H0v6h6v-2H2z%22/%3E%3C/svg%3E" alt="" style="height: 18px; width: 18px;"></button></div><div></div><div></div><div></div><div></div><div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" data-control-width="40" data-control-height="40" style="margin: 10px; user-select: none; position: absolute; bottom: 54px; right: 40px;"><div class="gmnoprint" data-control-width="40" data-control-height="40" style="display: none; position: absolute;"><div style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 40px; height: 40px;"><button draggable="false" aria-label="Gira el mapa en el sentido de las agujas del reloj" title="Gira el mapa en el sentido de las agujas del reloj" type="button" class="gm-control-active" style="background: none; display: none; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; left: 0px; top: 0px; overflow: hidden; width: 40px; height: 40px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"></button><div style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230); display: none;"></div><button draggable="false" aria-label="Gira el mapa en el sentido contrario al de las agujas del reloj" title="Gira el mapa en el sentido contrario al de las agujas del reloj" type="button" class="gm-control-active" style="background: none; display: none; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; left: 0px; top: 0px; overflow: hidden; width: 40px; height: 40px; transform: scaleX(-1);"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22/%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22m12.06%209.06%204-4-4-4-1.41%201.41%201.59%201.59h-.18c-2.3%200-4.6.88-6.35%202.64-3.52%203.51-3.52%209.21%200%2012.72%201.5%201.5%203.4%202.36%205.36%202.58v-2.02c-1.44-.21-2.84-.86-3.95-1.97-2.73-2.73-2.73-7.17%200-9.9%201.37-1.37%203.16-2.05%204.95-2.05h.17l-1.59%201.59zm8.94%203c-.19-1.74-.88-3.32-1.91-4.61l-1.43%201.43c.69.92%201.15%202%201.32%203.18zm-7.94%207.92V22c1.74-.19%203.32-.88%204.61-1.91l-1.43-1.43c-.91.68-2%201.15-3.18%201.32m4.6-2.74%201.43%201.43c1.04-1.29%201.72-2.88%201.91-4.61h-2.02c-.17%201.18-.64%202.27-1.32%203.18%22/%3E%3C/svg%3E" style="width: 20px; height: 20px;"></button><div style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230); display: none;"></div><button draggable="false" aria-label="Inclina el mapa" title="Inclina el mapa" type="button" class="gm-tilt gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; top: 0px; left: 0px; overflow: hidden; width: 40px; height: 40px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2016%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2016h8V9H0zm10%200h8V9h-8zM0%207h8V0H0zm10-7v7h8V0z%22/%3E%3C/svg%3E" style="width: 18px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2016%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2016h8V9H0zm10%200h8V9h-8zM0%207h8V0H0zm10-7v7h8V0z%22/%3E%3C/svg%3E" style="width: 18px;"><img alt="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2018%2016%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2016h8V9H0zm10%200h8V9h-8zM0%207h8V0H0zm10-7v7h8V0z%22/%3E%3C/svg%3E" style="width: 18px;"></button></div></div><gmp-internal-camera-control data-control-width="40" data-control-height="40" draggable="false" class="gmnoprint" style="position: absolute; cursor: pointer; user-select: none; left: 0px; top: 0px;"><button draggable="false" aria-label="Controles de visualización del mapa" title="Controles de visualización del mapa" type="button" class="gm-control-active" aria-expanded="false" aria-controls="5D42A65F-66E2-4E76-80A3-B47EDB931E18" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2019.175%202.125-2.125%201.425%201.4L12%2022l-3.55-3.55%201.425-1.4zM4.825%2012l2.125%202.125-1.4%201.425L2%2012l3.55-3.55%201.4%201.425zm14.35%200L17.05%209.875l1.4-1.425L22%2012l-3.55%203.55-1.4-1.425zM12%204.825%209.875%206.95%208.45%205.55%2012%202l3.55%203.55-1.425%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2019.175%202.125-2.125%201.425%201.4L12%2022l-3.55-3.55%201.425-1.4zM4.825%2012l2.125%202.125-1.4%201.425L2%2012l3.55-3.55%201.4%201.425zm14.35%200L17.05%209.875l1.4-1.425L22%2012l-3.55%203.55-1.4-1.425zM12%204.825%209.875%206.95%208.45%205.55%2012%202l3.55%203.55-1.425%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%231a73e8%22%20d%3D%22m12%2019.175%202.125-2.125%201.425%201.4L12%2022l-3.55-3.55%201.425-1.4zM4.825%2012l2.125%202.125-1.4%201.425L2%2012l3.55-3.55%201.4%201.425zm14.35%200L17.05%209.875l1.4-1.425L22%2012l-3.55%203.55-1.4-1.425zM12%204.825%209.875%206.95%208.45%205.55%2012%202l3.55%203.55-1.425%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23d1d1d1%22%20d%3D%22m12%2019.175%202.125-2.125%201.425%201.4L12%2022l-3.55-3.55%201.425-1.4zM4.825%2012l2.125%202.125-1.4%201.425L2%2012l3.55-3.55%201.4%201.425zm14.35%200L17.05%209.875l1.4-1.425L22%2012l-3.55%203.55-1.4-1.425zM12%204.825%209.875%206.95%208.45%205.55%2012%202l3.55%203.55-1.425%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button><menu id="5D42A65F-66E2-4E76-80A3-B47EDB931E18" style="list-style: none; padding: 0px; display: none; position: absolute; z-index: 999999; margin: 10px; width: 140px; height: 140px; right: 100%; bottom: -10px;"><li><button draggable="false" aria-label="Mover arriba" title="Mover arriba" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; top: 0px; left: 50%; transform: translateX(-50%);"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2010.8-4.6%204.6L6%2014l6-6%206%206-1.4%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22m12%2010.8-4.6%204.6L6%2014l6-6%206%206-1.4%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2010.8-4.6%204.6L6%2014l6-6%206%206-1.4%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23d1d1d1%22%20d%3D%22m12%2010.8-4.6%204.6L6%2014l6-6%206%206-1.4%201.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li><li><button draggable="false" aria-label="Mover a la izquierda" title="Mover a la izquierda" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; bottom: 50%; left: 0px; transform: translateY(50%);"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m14%2018-6-6%206-6%201.4%201.4-4.6%204.6%204.6%204.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22m14%2018-6-6%206-6%201.4%201.4-4.6%204.6%204.6%204.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m14%2018-6-6%206-6%201.4%201.4-4.6%204.6%204.6%204.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23d1d1d1%22%20d%3D%22m14%2018-6-6%206-6%201.4%201.4-4.6%204.6%204.6%204.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li><li><button draggable="false" aria-label="Mover a la derecha" title="Mover a la derecha" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; bottom: 50%; right: 0px; transform: translateY(50%);"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M12.6%2012%208%207.4%209.4%206l6%206-6%206L8%2016.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M12.6%2012%208%207.4%209.4%206l6%206-6%206L8%2016.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M12.6%2012%208%207.4%209.4%206l6%206-6%206L8%2016.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23d1d1d1%22%20d%3D%22M12.6%2012%208%207.4%209.4%206l6%206-6%206L8%2016.6z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li><li><button draggable="false" aria-label="Mover abajo" title="Mover abajo" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; bottom: 0px; left: 50%; transform: translateX(-50%);"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2015.4-6-6L7.4%208l4.6%204.6L16.6%208%2018%209.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22m12%2015.4-6-6L7.4%208l4.6%204.6L16.6%208%2018%209.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2015.4-6-6L7.4%208l4.6%204.6L16.6%208%2018%209.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22m12%2015.4-6-6L7.4%208l4.6%204.6L16.6%208%2018%209.4z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li><li><button draggable="false" aria-label="Ampliar" title="Ampliar" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; top: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23666%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M440-440H200v-80h240v-240h80v240h240v80H520v240h-80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23333%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M440-440H200v-80h240v-240h80v240h240v80H520v240h-80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23111%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M440-440H200v-80h240v-240h80v240h240v80H520v240h-80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23d1d1d1%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M440-440H200v-80h240v-240h80v240h240v80H520v240h-80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li><li><button draggable="false" aria-label="Reducir" title="Reducir" type="button" class="gm-control-active" style="background: none 6px center / 28px no-repeat rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: absolute; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; bottom: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23666%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M200-440v-80h560v80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23333%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M200-440v-80h560v80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23111%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M200-440v-80h560v80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%23d1d1d1%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20d%3D%22M200-440v-80h560v80z%22/%3E%3C/svg%3E" alt="" style="height: 28px; width: 28px;"></button></li></menu></gmp-internal-camera-control></div></div><div><div style="margin: 0px 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" rel="noopener" title="Abre esta zona en Google Maps (se abre en una nueva ventana)" aria-label="Abre esta zona en Google Maps (se abre en una nueva ventana)" href="https://maps.google.com/maps?ll=10.464853,-73.294167&amp;z=7&amp;t=m&amp;hl=es&amp;gl=US&amp;mapclient=apiv3" style="display: inline;"><div style="width: 66px; height: 26px;"><img alt="Google" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2069%2029%22%3E%3Cg%20fill%3D%22%23fff%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.5%22%20opacity%3D%22.6%22%3E%3Cpath%20d%3D%22m17.4706%207.33616.5412-.54112-.5519-.53011c-1.3636-1.30974-3.2017-2.31971-5.7591-2.31971-4.6137%200-8.50262%203.75517-8.50262%208.39578%200%204.6407%203.88892%208.3958%208.50262%208.3958%202.4704%200%204.3765-.8188%205.8732-2.3679%201.5695-1.5729%202.0216-3.7363%202.0216-5.4119%200-.5232-.044-1.0254-.1295-1.4529l-.1206-.6029h-8.3947v3.5942h4.8301c-.1724.5966-.4321%201.0286-.7491%201.3461-.6288.6214-1.5823%201.3094-3.331%201.3094-2.65245%200-4.73598-2.1312-4.73598-4.8099%200-2.67861%202.08353-4.80981%204.73598-4.80981%201.4362%200%202.4752.5607%203.257%201.29229l.5298.49574.513-.51303z%22/%3E%3Cpath%20d%3D%22M24.8656%2020.7286c3.089%200%205.6036-2.4192%205.6036-5.6692%200-3.2681-2.5162-5.66929-5.6036-5.66929-3.0873%200-5.6035%202.40119-5.6035%205.66929%200%203.25%202.5145%205.6692%205.6035%205.6692Zm0-7.9004c1.014%200%201.9766.837%201.9766%202.2312%200%201.3805-.9653%202.2311-1.9766%202.2311-1.0099%200-1.9765-.8574-1.9765-2.2311%200-1.3874.9639-2.2312%201.9765-2.2312Z%22/%3E%3Cpath%20d%3D%22M35.7511%2017.2905h-.0042c-1.0099%200-1.9766-.8574-1.9766-2.2311%200-1.3874.964-2.2312%201.9766-2.2312%201.0139%200%201.9765.837%201.9765%202.2312%200%201.3845-.968%202.2368-1.9723%202.2311Zm-.0124%203.4381c3.089%200%205.6035-2.4192%205.6035-5.6692%200-3.2681-2.5162-5.66929-5.6035-5.66929-3.0874%200-5.6036%202.40119-5.6036%205.66929%200%203.2508%202.5236%205.6692%205.6036%205.6692Z%22/%3E%3Cpath%20d%3D%22M51.953%2010.4357v-.74997h-3.5531v.12253c-.55-.26178-1.2022-.42639-1.9191-.42639-2.8837%200-5.464%202.51793-5.464%205.69393%200%202.1269%201.164%203.9479%202.8033%204.9137l-.0658.0273-1.8806.7802-.6929.2874.2876.6928c.6228%201.5004%202.2776%203.3697%205.0535%203.3697%201.4105%200%202.787-.4145%203.814-1.4093%201.0332-1.0009%201.6171-2.4965%201.6171-4.4653zm-7.2194%209.9844-.0002-.0005c.5552.2005%201.1446.309%201.7474.309.6808%200%201.3058-.1467%201.841-.3891-.0876.3891-.2417.671-.4252.8682-.2812.3022-.7202.5011-1.3747.5011-.91190000000001%200-1.5201-.6476-1.7883-1.2887Zm1.9361-7.5919c.9722%200%201.878.8483%201.878%202.2558%200%201.3796-.8956%202.2147-1.878%202.2147-1.0428%200-1.993-.8738-1.993-2.2147%200-1.3754.9595-2.2558%201.993-2.2558Zm9.069-7.60737v-.75h-3.6599V20.4412h3.6599z%22/%3E%3Cpath%20d%3D%22m63.9128%2016.0614-.6183-.4122-.4179.6145c-.4562.6709-1.0102%201.0432-1.8025%201.0432-.4306%200-.7595-.0981-1.0197-.2622-.07-.0441-.1383-.0951-.2046-.1536l5.6999-2.3625.6825-.283L65.9596%2013.5589l-.219-.5514c-.4528-1.2075-1.8899-3.60918-4.9128-3.60918-2.9833%200-5.3244%202.36358-5.3244%205.66928%200%203.1475%202.3222%205.6693%205.5625%205.6693%202.6043%200%204.1111-1.5991%204.7283-2.5156l.421-.625L65.5882%2017.1783zm-2.5667-3.2103-1.9353.8015c.3795-.5743%201.0107-.8572%201.4909-.8572.1653%200%20.3136.0207.4444.0557Z%22/%3E%3C/g%3E%3Cpath%20fill%3D%22%234285f4%22%20d%3D%22M11.7008%2019.9868c-4.21304%200-7.75262-3.4328-7.75262-7.6458%200-4.21297%203.53958-7.64578%207.75262-7.64578%202.3323%200%203.9912.91159%205.2395%202.11061l-1.47%201.47003c-.8952-.83767-2.1106-1.49467-3.7695-1.49467-3.07972%200-5.48598%202.48016-5.48598%205.55981%200%203.0797%202.40626%205.5599%205.48598%205.5599%201.9956%200%203.1289-.8048%203.8598-1.5275.5995-.5996.9855-1.4537%201.1333-2.628h-4.9931v-2.0942h7.0298c.0739.3695.115.8212.115%201.3058%200%201.5685-.427%203.5067-1.8067%204.8864-1.3469%201.3961-3.0551%202.1434-5.3381%202.1434%22/%3E%3Cpath%20fill%3D%22%23e94235%22%20d%3D%22M29.7192%2015.0594c0%202.8333-2.1763%204.9192-4.8536%204.9192-2.6772%200-4.8535-2.0859-4.8535-4.9192%200-2.8498%202.1763-4.9193%204.8535-4.9193%202.6773%200%204.8536%202.0695%204.8536%204.9193m-2.127%200c0-1.7739-1.2648-2.9812-2.7266-2.9812s-2.7265%201.2155-2.7265%202.9812c0%201.7492%201.2647%202.9811%202.7265%202.9811s2.7266-1.2237%202.7266-2.9811%22/%3E%3Cpath%20fill%3D%22%23fabb05%22%20d%3D%22M40.5922%2015.0594c0%202.8333-2.1763%204.9192-4.8535%204.9192-2.6691%200-4.8536-2.0859-4.8536-4.9192%200-2.8498%202.1763-4.9193%204.8536-4.9193%202.6772%200%204.8535%202.0695%204.8535%204.9193m-2.1188%200c0-1.7739-1.2647-2.9812-2.7265-2.9812s-2.7266%201.2155-2.7266%202.9812c0%201.7492%201.2648%202.9811%202.7266%202.9811%201.4618.0082%202.7265-1.2237%202.7265-2.9811%22/%3E%3Cpath%20fill%3D%22%234285f4%22%20d%3D%22M51.203%2010.4357v8.8366c0%203.6382-2.1435%205.1246-4.6811%205.1246-2.3899%200-3.8188-1.6014-4.3609-2.9072l1.8807-.7802c.3367.8048%201.158%201.7493%202.4802%201.7493%201.626%200%202.628-1.0101%202.628-2.8908v-.7063h-.074c-.4845.5995-1.4207%201.1169-2.5951%201.1169-2.4637%200-4.714-2.1434-4.714-4.9028%200-2.7758%202.2585-4.9439%204.714-4.9439%201.1744%200%202.1106.5256%202.5951%201.1004h.074v-.7966zm-1.9053%204.6483c0-1.7328-1.158-3.0058-2.628-3.0058-1.4947%200-2.743%201.2647-2.743%203.0058%200%201.7164%201.2483%202.9647%202.743%202.9647%201.47%200%202.628-1.2483%202.628-2.9647%22/%3E%3Cpath%20fill%3D%22%2334a853%22%20d%3D%22M54.9887%205.22083V19.6912h-2.1599V5.22083z%22/%3E%3Cpath%20fill%3D%22%23e94235%22%20d%3D%22m63.4968%2016.6854%201.6754%201.1169c-.5421.8049-1.8478%202.1846-4.1063%202.1846-2.8004%200-4.8125-2.1599-4.8125-4.9193%200-2.9237%202.0367-4.9193%204.5744-4.9193%202.554%200%203.8023%202.0285%204.213%203.129l.2217.5584-6.5782%202.7266c.501.9855%201.2894%201.4946%202.3898%201.4946%201.1005%200%201.8643-.5502%202.4227-1.3715m-5.1656-1.7739%204.4019-1.8231c-.2464-.616-.9691-1.043-1.8314-1.043-1.1005%200-2.628.9691-2.5705%202.8661%22/%3E%3C/svg%3E" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div></div><div></div><div><div style="display: inline-flex; position: absolute; right: 0px; bottom: 0px;"><div class="gmnoprint" style="z-index: 1000001;"><div draggable="false" class="gm-style-cc" style="user-select: none; position: relative; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(0, 0, 0); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><button draggable="false" aria-label="Combinaciones de teclas" title="Combinaciones de teclas" type="button" style="background: none; display: inline-block; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; color: rgb(0, 0, 0); font-family: inherit; line-height: inherit;">Combinaciones de teclas</button></div></div></div><div class="gmnoprint" style="z-index: 1000001;"><div draggable="false" class="gm-style-cc" style="user-select: none; position: relative; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(0, 0, 0); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><button draggable="false" aria-label="Datos del mapa" title="Datos del mapa" type="button" style="background: none; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; color: rgb(0, 0, 0); font-family: inherit; line-height: inherit; display: none;">Datos del mapa</button><span style="">Datos del mapa ©2026 Google, INEGI</span></div></div></div><div class="gmnoscreen"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(0, 0, 0); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Datos del mapa ©2026 Google, INEGI</div></div><button draggable="false" aria-label="Escala del mapa: 50 km por 41 píxeles" title="Escala del mapa: 50 km por 41 píxeles" type="button" class="gm-style-cc" aria-describedby="A1CE4E0C-E982-4DC9-BC17-FED8E355FDF2" style="background: none; display: none; border: 0px; margin: 0px; padding: 0px; text-transform: none; appearance: none; position: relative; cursor: pointer; user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(0, 0, 0); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><span style="color: rgb(0, 0, 0);">50 km&nbsp;</span><div style="position: relative; display: inline-block; height: 8px; bottom: -1px; width: 45px;"><div style="width: 100%; height: 4px; position: absolute; left: 0px; top: 0px;"></div><div style="width: 4px; height: 8px; left: 0px; top: 0px;"></div><div style="width: 4px; height: 8px; position: absolute; right: 0px; bottom: 0px;"></div><div style="position: absolute; background-color: rgb(0, 0, 0); height: 2px; left: 1px; bottom: 1px; right: 1px;"></div><div style="position: absolute; width: 2px; height: 6px; left: 1px; top: 1px; background-color: rgb(0, 0, 0);"></div><div style="width: 2px; height: 6px; position: absolute; background-color: rgb(0, 0, 0); bottom: 1px; right: 1px;"></div></div></div><span id="A1CE4E0C-E982-4DC9-BC17-FED8E355FDF2" style="display: none;">Haz clic para alternar entre unidades métricas e imperiales</span></button><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; position: relative; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(0, 0, 0); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a aria-label="Términos (se abre en una nueva pestaña)" href="https://www.google.com/intl/es_US/help/terms_maps.html" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer; color: rgb(0, 0, 0);">Términos</a></div></div><div draggable="false" class="gm-style-cc" style="user-select: none; position: relative; height: 14px; line-height: 14px; display: none;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(0, 0, 0); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="Informar a Google acerca de errores en las imágenes o en el mapa de carreteras" dir="ltr" href="https://www.google.com/maps/@10.464853,-73.2941668,7z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; text-decoration: none; position: relative; color: rgb(0, 0, 0);">Notificar un problema de Maps</a></div></div></div></div></div></div><div style="background-color: white; font-weight: 500; font-family: Roboto, sans-serif; padding: 15px 25px; box-sizing: border-box; top: 5px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 5px; left: 50%; max-width: 375px; position: absolute; transform: translateX(-50%); width: calc(100% - 10px); z-index: 1;"><div><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google_gray.svg" draggable="false" style="padding: 0px; margin: 0px; border: 0px; height: 17px; vertical-align: middle; width: 52px; user-select: none;"></div><div style="line-height: 20px; margin: 15px 0px;"><span style="color: rgba(0, 0, 0, 0.87); font-size: 14px;">Esta página no puede cargar Google&nbsp;Maps correctamente.</span></div><table style="width: 100%;"><tr><td style="line-height: 16px; vertical-align: middle;"><a href="http://g.co/dev/maps-no-account" target="_blank" rel="noopener" style="color: rgba(0, 0, 0, 0.54); font-size: 12px;">¿Eres el propietario de este sitio web?</a></td><td style="text-align: right;"><button class="dismissButton">Aceptar</button></td></tr></table></div></div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="TerminosYCondiciones" class="col-lg-12" style="display:none;">
+            <div class="bs-component page-header">
+              <div class="panel panel-default">
+                   <div class="panel-heading">
+                       <button type="button" class="close" data-dismiss="modal" onclick="javascript:CerrarTerminiosYCondiciones();" aria-hidden="true">×</button>
+                    <h4>TÉRMINOS Y CONDICIONES (ES OBLIGATORIO LEER Y ACEPTARLAS ANTES DE CONTINUAR CON LA SOLICITUD). </h4>
+                   </div>
+                  <div class="panel-body">
+                      <h3><strong> Términos y condiciones:</strong></h3>
+
+                      <lu>
+                          <li style="font-size: 1.4em;">
+                              CLÁUSULA 1: TRATAMIENTO DE DATOS PERSONALES DE USUARIOS DE LOS SERVICIOS PÚBLICOS DOMICILIARIOS.  Ley 1581 de 2012 y demás normas vigentes.
+                              <br>
+                          </li>
+                          <li style="font-size: 1.4em;">
+                              CLÁUSULA 2: ACEPTACIÓN DEL USUARIO PARA TRÁMITES EN LÍNEA.
+
+                              Declaro que soy mayor de edad y actúo de manera personal y voluntaria. Doy fe que la información que registro en este formulario es real y verídica, además indico que los documentos que aquí aporto son copia del documento original, por lo que responderé ante la autoridad competente por cualquier irregularidad que se identifique en los mismos. Declaro que conozco que es necesario que adjunte todos los requisitos solicitados y que, de no hacerlo, el trámite no podrá ser diligenciado satisfactoriamente. Autorizo a Electricaribe que me envíe todas las notificaciones resultado de esta solicitud a mi correo electrónico. Acepto todos los términos y condiciones definidos por Electricaribe para este trámite en línea.
+                          </li>
+                      </lu>
+                      <div class="form-group">
+                                            
+                            <div class="checkbox">
+                                <label>
+                                  <input id="ChkAceptoTYC" type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Acepto Términos y Condiciones
+                                </label>
+                                
+                            </div>
+                                            
+                        </div>
+                   </div>
+                  <div class="panel-footer">
+                      <a class="btn btn-primary" id="BtnTxCContinuar" role="button">Continuar</a>  <a id="BtnTxCCancelar" class="btn btn-primary " role="button">Cancelar</a>
+                      
+                  </div>
+
+              </div>
+            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+        </div> 
+        <form id="formSolicitud" style="display:none;">
+            <div id="DivFormSolicitud">
+                <div class="col-lg-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="font-size: 1.5em;">
+                            FORMULARIO PARA SOLICITUD DE CONEXIÓN SIMPLIFICADA DE AUTOGENERADORES A PEQUEÑA ESCALA Y GENERADORES DISTRIBUÍDOS CON POTENCIA INSTALADA &lt;= 100 KW
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive form-nomargin">
+                                <table class="table table-bordered ">
+                        
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Tipo generación</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Tipo</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Si es autogenerador, entrega excedentes a la red</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Fecha prevista de entrada en operación comercial, si es generador distribuido</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Fecha estimada de conexión del proyecto, si es autogenerador</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlTipo" class="form-control" required=""><option value="">Seleccione Tipo</option><option value="1">AGPE menor igual 0.1MVA</option><option value="2">GD menor igual 0.1MVA</option><option value="3">AGPE menor igual 1MVA y mayor 0.1MVA</option><option value="4">AG menor igual 5MVA y mayor 1MVA</option><option value="5">GD menor igual 1MVA y mayor 0.1MVA</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlEntregaExcedente" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group">
+                                                    <div class="input-group date" id="DivFechaEntOperacion" style="width: 100%;">
+                                                        <input type="text" id="TxtFechaEntOperacion" class="form-control" required="">
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                        
+                                                    </div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group">
+                                                <div class=" input-group date" id="DivFechaConexion" style="width: 100%;">
+                                                    <input type="text" id="TxtFechaConexion" class="form-control" required="">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                    
+                                                </div>
+                                                    <div class="help-block with-errors"></div>
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información cliente</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Cliente nuevo</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">No. de cuenta cliente</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Nombre del cliente</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Cédula de Ciudadanía/NIT</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlNuevoCliente" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtNCuentaCli" class="form-control solo-numero" maxlength="7" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtNombreCli" class="form-control" maxlength="100" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtIdentificacionCli" class="form-control solo-numero" maxlength="10" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Dirección del cliente</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Ciudad</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Email </td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Teléfono/Celular</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtDirrecionCli" class="form-control" maxlength="100" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCiudadCli" class="form-control" required=""><option value="">Seleccione Ciudad</option><option value="1">ACHI</option><option value="148">AGUACHICA</option><option value="321">AGUAZUL</option><option value="149">AGUSTIN CODAZZI</option><option value="251">ALBAN</option><option value="220">ALBANIA</option><option value="231">ALGARROBO CESAR</option><option value="122">ALGARROBO MAGD</option><option value="2">ALTOS DEL ROSARIO</option><option value="320">APARTADO</option><option value="123">ARACATACA</option><option value="313">ARAUCA</option><option value="3">ARENAL DEL SUR</option><option value="124">ARIGUANI</option><option value="4">ARJONA</option><option value="253">ARMENIA</option><option value="5">ARROYOHONDO</option><option value="150">ASTREA</option><option value="46">AYAPEL</option><option value="99">BARANOA</option><option value="290">BARRANCABERMEJA</option><option value="173">BARRANCAS</option><option value="6">BARRANCO DE LOBA</option><option value="100">BARRANQUILLA</option><option value="151">BECERRIL</option><option value="280">BELLO</option><option value="229">BOGOTA</option><option value="326">BOJACA</option><option value="282">BOSA</option><option value="152">BOSCONIA</option><option value="262">BRICENO</option><option value="241">BUCARAMANGA</option><option value="318">BUCARAMNGA</option><option value="254">BUENAVENTURA</option><option value="47">BUENAVISTA_CORDOBA</option><option value="74">BUENAVISTA_SUCRE</option><option value="268">BUGA</option><option value="75">CAIMITO</option><option value="243">CAJICA</option><option value="7">CALAMAR</option><option value="270">CALDAS</option><option value="237">CALI</option><option value="303">CALOTO</option><option value="101">CAMPO DE LA CRUZ</option><option value="48">CANALETE</option><option value="102">CANDELARIA</option><option value="9">CARTAGENA</option><option value="278">CARTAGO</option><option value="250">CAUCASIA</option><option value="49">CERETE</option><option value="125">CERRO DE SAN ANTONIO</option><option value="76">CHALAN</option><option value="239">CHIA</option><option value="50">CHIMA</option><option value="153">CHIMICHAGUA</option><option value="51">CHINU</option><option value="154">CHIRIGUANA</option><option value="126">CHIVOLO</option><option value="292">CHOCONTA</option><option value="10">CICUCO</option><option value="127">CIENAGA</option><option value="52">CIENAGA DE ORO</option><option value="11">CLEMENCIA</option><option value="77">COLOSO</option><option value="128">CONCORDIA</option><option value="248">COPACABANA</option><option value="12">CORDOBA</option><option value="78">COROZAL</option><option value="273">COTA</option><option value="53">COTORRA</option><option value="224">COVENAS</option><option value="286">CUCUTA</option><option value="155">CURUMANI</option><option value="174">DIBULLA</option><option value="175">DISTRACCION</option><option value="301">DOSQUEBRADA</option><option value="284">DUITAMA</option><option value="129">EL BANCO</option><option value="13">EL CARMEN DE BOLIVAR</option><option value="330">EL CARMEN DE VIBORAL</option><option value="297">EL CERRITO</option><option value="156">EL COPEY</option><option value="14">EL GUAMO</option><option value="176">EL MOLINO</option><option value="157">EL PASO</option><option value="15">EL PENON</option><option value="130">EL PINON</option><option value="131">EL RETEN</option><option value="206">EL ROBLE</option><option value="332">EL ROSAL</option><option value="240">ENVIGADO</option><option value="304">ESPINAL</option><option value="300">FACATATIVA</option><option value="308">FLORENCIA</option><option value="283">FLORIDABLANCA</option><option value="177">FONSECA</option><option value="285">FONTIBON</option><option value="132">FUNDACION</option><option value="319">FUNZA</option><option value="245">FUSAGASUGA</option><option value="328">GACHANCIPA</option><option value="103">GALAPA</option><option value="79">GALERAS</option><option value="158">GAMARRA</option><option value="261">GIRARDOT</option><option value="159">GONZALEZ</option><option value="133">GUAMAL</option><option value="80">GUARANDA</option><option value="316">GUARNE</option><option value="16">HATILLO DE LOBA</option><option value="178">HATONUEVO</option><option value="257">IBAGUE</option><option value="249">ITAGUI</option><option value="104">JUAN DE ACOSTA</option><option value="54">LA APARTADA</option><option value="160">LA CAJA</option><option value="302">LA CALERA</option><option value="327">LA CEJA</option><option value="287">LA DORADA</option><option value="247">LA ESTRELLA</option><option value="161">LA GLORIA</option><option value="162">LA JAGUA DE IBIRICO</option><option value="179">LA JAGUA DEL PILAR</option><option value="163">LA PAZ</option><option value="81">LA UNION DE SUCRE</option><option value="55">LORICA</option><option value="56">LOS CORDOBAS</option><option value="82">LOS PALMITOS</option><option value="105">LURUACO</option><option value="276">MADRID</option><option value="98">MAGANGUE</option><option value="18">MAHATES</option><option value="180">MAICAO</option><option value="83">MAJAGUAL</option><option value="106">MALAMBO</option><option value="107">MANATI</option><option value="164">MANAURE-CESAR</option><option value="181">MANAURE-GUAJIRA</option><option value="255">MANIZALES</option><option value="19">MARGARITA</option><option value="20">MARIA LA BAJA</option><option value="307">MARIQUITA</option><option value="233">MEDELLIN</option><option value="279">MELGAR</option><option value="57">MOMIL</option><option value="21">MOMPOS</option><option value="60">MONITOS</option><option value="22">MONTECRISTO</option><option value="58">MONTELIBANO</option><option value="258">MONTENEGRO</option><option value="59">MONTERIA</option><option value="293">MONTERREY</option><option value="23">MORALES</option><option value="84">MORROA</option><option value="236">MOSQUERA</option><option value="264">NEIVA</option><option value="298">NILO</option><option value="263">NOROSI</option><option value="201">NUEVA GRANADA</option><option value="242">OCANA</option><option value="311">OCANA-SANTANDER</option><option value="85">OVEJAS</option><option value="165">PAILITAS</option><option value="256">PAIPA</option><option value="108">PALMAR DE VARELA</option><option value="272">PALMIRA</option><option value="86">PALMITO</option><option value="310">PAMPLONA</option><option value="305">PASTO</option><option value="134">PEDRAZA</option><option value="166">PELAYA</option><option value="244">PEREIRA</option><option value="289">PESCA</option><option value="331">PIE DE CUESTA</option><option value="135">PIJINO DEL CARMEN</option><option value="24">PINILLOS</option><option value="109">PIOJO</option><option value="136">PIVIJAY</option><option value="61">PLANETA RICA</option><option value="137">PLATO</option><option value="110">POLONUEVO</option><option value="111">PONEDERA</option><option value="265">POPAYAN</option><option value="207">PUEBLO BELLO</option><option value="62">PUEBLO NUEVO</option><option value="138">PUEBLO VIEJO</option><option value="299">PUERTO BOYACA</option><option value="112">PUERTO COLOMBIA</option><option value="63">PUERTO ESCONDIDO</option><option value="64">PUERTO LIBERTADOR</option><option value="65">PURISIMA</option><option value="309">QUIBDO</option><option value="25">REGIDOR</option><option value="139">REMOLINO</option><option value="113">REPELON</option><option value="296">RICAURTE</option><option value="167">RIO DE ORO</option><option value="238">RIO NEGRO</option><option value="26">RIO VIEJO</option><option value="182">RIOHACHA</option><option value="114">SABANAGRANDE</option><option value="115">SABANALARGA</option><option value="140">SABANAS DE SAN ANGEL</option><option value="323">SABANETA</option><option value="66">SAHAGUN</option><option value="141">SALAMINA</option><option value="87">SAMPUES</option><option value="168">SAN ALBERTO</option><option value="67">SAN ANDRES SOTAVENTO</option><option value="68">SAN ANTERO</option><option value="88">SAN BENITO ABAD</option><option value="69">SAN BERNARDO DEL VIENTO</option><option value="70">SAN CARLOS</option><option value="27">SAN CRISTOBAL</option><option value="169">SAN DIEGO</option><option value="28">SAN ESTANISLAO</option><option value="29">SAN FERNANDO</option><option value="30">SAN JACINTO</option><option value="31">SAN JACINTO DEL CAUCA</option><option value="271">SAN JOSE DE URE</option><option value="89">SAN JUAN DE BETULIA</option><option value="183">SAN JUAN DEL CESAR</option><option value="32">SAN JUAN NEPOMUCENO</option><option value="90">SAN MARCOS</option><option value="170">SAN MARTIN</option><option value="33">SAN MARTIN DE LOBA</option><option value="91">SAN ONOFRE</option><option value="34">SAN PABLO</option><option value="92">SAN PEDRO</option><option value="71">SAN PELAYO</option><option value="142">SAN SEBASTIAN DE BUENAVISTA</option><option value="143">SAN ZENON</option><option value="144">SANTA ANA</option><option value="190">SANTA BARBARA DE PINTO</option><option value="35">SANTA CATALINA</option><option value="116">SANTA LUCIA</option><option value="145">SANTA MARTA</option><option value="36">SANTA ROSA</option><option value="315">SANTA ROSA DE CABAL</option><option value="37">SANTA ROSA DEL SUR</option><option value="96">SANTIAGO DE TOLU</option><option value="117">SANTO TOMAS</option><option value="329">SESQUILE</option><option value="38">SIMITI</option><option value="93">SINCE</option><option value="94">SINCELEJO</option><option value="146">SITIONUEVO</option><option value="277">SOACHA</option><option value="314">SOGAMOSO</option><option value="118">SOLEDAD</option><option value="39">SOPLAVIENTO</option><option value="312">SOPO</option><option value="119">SUAN</option><option value="95">SUCRE</option><option value="281">SUESCA</option><option value="40">TALAIGUA NUEVO</option><option value="171">TAMALAMEQUE</option><option value="147">TENERIFE</option><option value="288">TIBABOSA</option><option value="72">TIERRALTA</option><option value="41">TIQUISIO</option><option value="317">TOCANCIPA</option><option value="252">TOLIMA</option><option value="97">TOLUVIEJO</option><option value="120">TUBARA</option><option value="269">TUCHIN</option><option value="267">TULUA</option><option value="291">TUNJA</option><option value="42">TURBACO</option><option value="43">TURBANA</option><option value="246">TURBO</option><option value="184">URIBIA</option><option value="185">URUMITA</option><option value="259">USAQUEN</option><option value="121">USIACURI</option><option value="73">VALENCIA</option><option value="172">VALLEDUPAR</option><option value="44">VILLANUEVA-BOLIVAR</option><option value="186">VILLANUEVA-GUAJIRA</option><option value="266">VILLAVICENCIO</option><option value="306">YOPAL</option><option value="235">YUMBO</option><option value="45">ZAMBRANO</option><option value="225">ZAPAYAN</option><option value="274">ZIPAQUIRA</option><option value="226">ZONA BANANERA</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input type="email" id="TxtEmailCli" class="form-control" maxlength="30" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtTelefonoCli" class="form-control solo-numero" maxlength="10" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="9" class="col-md-9 labelTextCenterBold">Tipo del cliente</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Estrato</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="9">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" checked="" name="OptTipoCli" id="OptTipoCli1" value="1" required=""><span class="circle"></span><span class="check"></span>
+                                                              Residencia
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTipoCli" id="OptTipoCli2" value="2" required=""><span class="circle"></span><span class="check"></span>
+                                                              Comercial
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTipoCli" id="OptTipoCli3" value="3" required=""><span class="circle"></span><span class="check"></span>
+                                                              Industrial
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTipoCli" id="OptTipoCli4" value="4" required=""><span class="circle"></span><span class="check"></span>
+                                                              Oficial
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTipoCli" id="OptTipoCli5" value="5" required=""><span class="circle"></span><span class="check"></span>
+                                                              Agropecuario
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTipoCli" id="OptTipoCli6" value="6" required=""><span class="circle"></span><span class="check"></span>
+                                                              Otro
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <input id="TxtTipoCliOtro" class="form-control" maxlength="30" style="padding-left: 10px;" disabled="">
+                                                    </div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlEstratoCli" class="form-control" required="">
+                                                        <option value="">Seleccione</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información inmueble</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Dirección de ubicación del proyecto</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Ciudad</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Corregimiento</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtDirrecionPro" class="form-control" maxlength="30" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCiudadPro" class="form-control" required=""><option value="">Seleccione Ciudad</option><option value="1">ACHI</option><option value="148">AGUACHICA</option><option value="321">AGUAZUL</option><option value="149">AGUSTIN CODAZZI</option><option value="251">ALBAN</option><option value="220">ALBANIA</option><option value="231">ALGARROBO CESAR</option><option value="122">ALGARROBO MAGD</option><option value="2">ALTOS DEL ROSARIO</option><option value="320">APARTADO</option><option value="123">ARACATACA</option><option value="313">ARAUCA</option><option value="3">ARENAL DEL SUR</option><option value="124">ARIGUANI</option><option value="4">ARJONA</option><option value="253">ARMENIA</option><option value="5">ARROYOHONDO</option><option value="150">ASTREA</option><option value="46">AYAPEL</option><option value="99">BARANOA</option><option value="290">BARRANCABERMEJA</option><option value="173">BARRANCAS</option><option value="6">BARRANCO DE LOBA</option><option value="100">BARRANQUILLA</option><option value="151">BECERRIL</option><option value="280">BELLO</option><option value="229">BOGOTA</option><option value="326">BOJACA</option><option value="282">BOSA</option><option value="152">BOSCONIA</option><option value="262">BRICENO</option><option value="241">BUCARAMANGA</option><option value="318">BUCARAMNGA</option><option value="254">BUENAVENTURA</option><option value="47">BUENAVISTA_CORDOBA</option><option value="74">BUENAVISTA_SUCRE</option><option value="268">BUGA</option><option value="75">CAIMITO</option><option value="243">CAJICA</option><option value="7">CALAMAR</option><option value="270">CALDAS</option><option value="237">CALI</option><option value="303">CALOTO</option><option value="101">CAMPO DE LA CRUZ</option><option value="48">CANALETE</option><option value="102">CANDELARIA</option><option value="9">CARTAGENA</option><option value="278">CARTAGO</option><option value="250">CAUCASIA</option><option value="49">CERETE</option><option value="125">CERRO DE SAN ANTONIO</option><option value="76">CHALAN</option><option value="239">CHIA</option><option value="50">CHIMA</option><option value="153">CHIMICHAGUA</option><option value="51">CHINU</option><option value="154">CHIRIGUANA</option><option value="126">CHIVOLO</option><option value="292">CHOCONTA</option><option value="10">CICUCO</option><option value="127">CIENAGA</option><option value="52">CIENAGA DE ORO</option><option value="11">CLEMENCIA</option><option value="77">COLOSO</option><option value="128">CONCORDIA</option><option value="248">COPACABANA</option><option value="12">CORDOBA</option><option value="78">COROZAL</option><option value="273">COTA</option><option value="53">COTORRA</option><option value="224">COVENAS</option><option value="286">CUCUTA</option><option value="155">CURUMANI</option><option value="174">DIBULLA</option><option value="175">DISTRACCION</option><option value="301">DOSQUEBRADA</option><option value="284">DUITAMA</option><option value="129">EL BANCO</option><option value="13">EL CARMEN DE BOLIVAR</option><option value="330">EL CARMEN DE VIBORAL</option><option value="297">EL CERRITO</option><option value="156">EL COPEY</option><option value="14">EL GUAMO</option><option value="176">EL MOLINO</option><option value="157">EL PASO</option><option value="15">EL PENON</option><option value="130">EL PINON</option><option value="131">EL RETEN</option><option value="206">EL ROBLE</option><option value="332">EL ROSAL</option><option value="240">ENVIGADO</option><option value="304">ESPINAL</option><option value="300">FACATATIVA</option><option value="308">FLORENCIA</option><option value="283">FLORIDABLANCA</option><option value="177">FONSECA</option><option value="285">FONTIBON</option><option value="132">FUNDACION</option><option value="319">FUNZA</option><option value="245">FUSAGASUGA</option><option value="328">GACHANCIPA</option><option value="103">GALAPA</option><option value="79">GALERAS</option><option value="158">GAMARRA</option><option value="261">GIRARDOT</option><option value="159">GONZALEZ</option><option value="133">GUAMAL</option><option value="80">GUARANDA</option><option value="316">GUARNE</option><option value="16">HATILLO DE LOBA</option><option value="178">HATONUEVO</option><option value="257">IBAGUE</option><option value="249">ITAGUI</option><option value="104">JUAN DE ACOSTA</option><option value="54">LA APARTADA</option><option value="160">LA CAJA</option><option value="302">LA CALERA</option><option value="327">LA CEJA</option><option value="287">LA DORADA</option><option value="247">LA ESTRELLA</option><option value="161">LA GLORIA</option><option value="162">LA JAGUA DE IBIRICO</option><option value="179">LA JAGUA DEL PILAR</option><option value="163">LA PAZ</option><option value="81">LA UNION DE SUCRE</option><option value="55">LORICA</option><option value="56">LOS CORDOBAS</option><option value="82">LOS PALMITOS</option><option value="105">LURUACO</option><option value="276">MADRID</option><option value="98">MAGANGUE</option><option value="18">MAHATES</option><option value="180">MAICAO</option><option value="83">MAJAGUAL</option><option value="106">MALAMBO</option><option value="107">MANATI</option><option value="164">MANAURE-CESAR</option><option value="181">MANAURE-GUAJIRA</option><option value="255">MANIZALES</option><option value="19">MARGARITA</option><option value="20">MARIA LA BAJA</option><option value="307">MARIQUITA</option><option value="233">MEDELLIN</option><option value="279">MELGAR</option><option value="57">MOMIL</option><option value="21">MOMPOS</option><option value="60">MONITOS</option><option value="22">MONTECRISTO</option><option value="58">MONTELIBANO</option><option value="258">MONTENEGRO</option><option value="59">MONTERIA</option><option value="293">MONTERREY</option><option value="23">MORALES</option><option value="84">MORROA</option><option value="236">MOSQUERA</option><option value="264">NEIVA</option><option value="298">NILO</option><option value="263">NOROSI</option><option value="201">NUEVA GRANADA</option><option value="242">OCANA</option><option value="311">OCANA-SANTANDER</option><option value="85">OVEJAS</option><option value="165">PAILITAS</option><option value="256">PAIPA</option><option value="108">PALMAR DE VARELA</option><option value="272">PALMIRA</option><option value="86">PALMITO</option><option value="310">PAMPLONA</option><option value="305">PASTO</option><option value="134">PEDRAZA</option><option value="166">PELAYA</option><option value="244">PEREIRA</option><option value="289">PESCA</option><option value="331">PIE DE CUESTA</option><option value="135">PIJINO DEL CARMEN</option><option value="24">PINILLOS</option><option value="109">PIOJO</option><option value="136">PIVIJAY</option><option value="61">PLANETA RICA</option><option value="137">PLATO</option><option value="110">POLONUEVO</option><option value="111">PONEDERA</option><option value="265">POPAYAN</option><option value="207">PUEBLO BELLO</option><option value="62">PUEBLO NUEVO</option><option value="138">PUEBLO VIEJO</option><option value="299">PUERTO BOYACA</option><option value="112">PUERTO COLOMBIA</option><option value="63">PUERTO ESCONDIDO</option><option value="64">PUERTO LIBERTADOR</option><option value="65">PURISIMA</option><option value="309">QUIBDO</option><option value="25">REGIDOR</option><option value="139">REMOLINO</option><option value="113">REPELON</option><option value="296">RICAURTE</option><option value="167">RIO DE ORO</option><option value="238">RIO NEGRO</option><option value="26">RIO VIEJO</option><option value="182">RIOHACHA</option><option value="114">SABANAGRANDE</option><option value="115">SABANALARGA</option><option value="140">SABANAS DE SAN ANGEL</option><option value="323">SABANETA</option><option value="66">SAHAGUN</option><option value="141">SALAMINA</option><option value="87">SAMPUES</option><option value="168">SAN ALBERTO</option><option value="67">SAN ANDRES SOTAVENTO</option><option value="68">SAN ANTERO</option><option value="88">SAN BENITO ABAD</option><option value="69">SAN BERNARDO DEL VIENTO</option><option value="70">SAN CARLOS</option><option value="27">SAN CRISTOBAL</option><option value="169">SAN DIEGO</option><option value="28">SAN ESTANISLAO</option><option value="29">SAN FERNANDO</option><option value="30">SAN JACINTO</option><option value="31">SAN JACINTO DEL CAUCA</option><option value="271">SAN JOSE DE URE</option><option value="89">SAN JUAN DE BETULIA</option><option value="183">SAN JUAN DEL CESAR</option><option value="32">SAN JUAN NEPOMUCENO</option><option value="90">SAN MARCOS</option><option value="170">SAN MARTIN</option><option value="33">SAN MARTIN DE LOBA</option><option value="91">SAN ONOFRE</option><option value="34">SAN PABLO</option><option value="92">SAN PEDRO</option><option value="71">SAN PELAYO</option><option value="142">SAN SEBASTIAN DE BUENAVISTA</option><option value="143">SAN ZENON</option><option value="144">SANTA ANA</option><option value="190">SANTA BARBARA DE PINTO</option><option value="35">SANTA CATALINA</option><option value="116">SANTA LUCIA</option><option value="145">SANTA MARTA</option><option value="36">SANTA ROSA</option><option value="315">SANTA ROSA DE CABAL</option><option value="37">SANTA ROSA DEL SUR</option><option value="96">SANTIAGO DE TOLU</option><option value="117">SANTO TOMAS</option><option value="329">SESQUILE</option><option value="38">SIMITI</option><option value="93">SINCE</option><option value="94">SINCELEJO</option><option value="146">SITIONUEVO</option><option value="277">SOACHA</option><option value="314">SOGAMOSO</option><option value="118">SOLEDAD</option><option value="39">SOPLAVIENTO</option><option value="312">SOPO</option><option value="119">SUAN</option><option value="95">SUCRE</option><option value="281">SUESCA</option><option value="40">TALAIGUA NUEVO</option><option value="171">TAMALAMEQUE</option><option value="147">TENERIFE</option><option value="288">TIBABOSA</option><option value="72">TIERRALTA</option><option value="41">TIQUISIO</option><option value="317">TOCANCIPA</option><option value="252">TOLIMA</option><option value="97">TOLUVIEJO</option><option value="120">TUBARA</option><option value="269">TUCHIN</option><option value="267">TULUA</option><option value="291">TUNJA</option><option value="42">TURBACO</option><option value="43">TURBANA</option><option value="246">TURBO</option><option value="184">URIBIA</option><option value="185">URUMITA</option><option value="259">USAQUEN</option><option value="121">USIACURI</option><option value="73">VALENCIA</option><option value="172">VALLEDUPAR</option><option value="44">VILLANUEVA-BOLIVAR</option><option value="186">VILLANUEVA-GUAJIRA</option><option value="266">VILLAVICENCIO</option><option value="306">YOPAL</option><option value="235">YUMBO</option><option value="45">ZAMBRANO</option><option value="225">ZAPAYAN</option><option value="274">ZIPAQUIRA</option><option value="226">ZONA BANANERA</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCorregimientoPro" class="form-control" required="">
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Vereda</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Ubicación georreferenciada wgs84 (de googlemaps)</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Número de poste o código del transformador más cercano</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlVeredaPro" class="form-control" required="">
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <label for="TxtLatPro" class="col-md-2 control-label">Latitud</label>
+
+                                                    <div class="col-md-10">
+                                                        <input id="TxtLatPro" class="form-control" maxlength="12" disabled="">
+                                                    </div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group form-group-sm">
+                                                    <label for="TxtLogPro" class="col-md-2 control-label">Longitud</label>
+
+                                                    <div class="col-md-10">
+                                                        <input id="TxtLogPro" class="form-control" maxlength="12" disabled="">
+                                                    </div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtCodTrafoPro" class="form-control" maxlength="8" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Tipo de tecnología</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Tecnología utilizada</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Cuenta con inversores</td>
+                                            <td colspan="4" class="col-md-4 labelTextCenterBold">Cuenta con almacenamiento de energía</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">    
+                                                <div class="form-group">
+                                                    <div class="form-group form-group-sm">
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" checked="" name="OptTecnoUtilizada" id="OptTecnoUtilizada1" value="1" required=""><span class="circle"></span><span class="check"></span>
+                                                              Solar FV
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada2" value="2" required=""><span class="circle"></span><span class="check"></span>
+                                                              Biomasa
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada3" value="3" required=""><span class="circle"></span><span class="check"></span>
+                                                              Geotermica
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada4" value="4" required=""><span class="circle"></span><span class="check"></span>
+                                                              Eolica
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada5" value="5" required=""><span class="circle"></span><span class="check"></span>
+                                                              Hidraulica
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada6" value="6" required=""><span class="circle"></span><span class="check"></span>
+                                                              Mareomotriz
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <div class="radio radio-inline">
+                                                            <label style="font-size: 12px;">
+                                                              <input type="radio" name="OptTecnoUtilizada" id="OptTecnoUtilizada7" value="7" required=""><span class="circle"></span><span class="check"></span>
+                                                              otro
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="float: left;">
+                                                        <input id="TxtTecnoUtilizadaOtro" class="form-control" maxlength="50" style="padding-left: 10px;" disabled="">
+                                                    </div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                                
+                                                </div>
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlTieneInversores" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="4">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdltieneAlmacenamiento" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                                <div id="divCapacidadAlmacenamiento" class="form-group form-group-sm">
+                                                    <label for="TxtCapacidadAlmacenamiento" class="col-md-4 control-label">indique capacidad (kWh)</label>
+
+                                                    <div class="col-md-8">
+                                                        <input id="TxtCapacidadAlmacenamiento" class="form-control solo-decimal" maxlength="7" required="">
+                                                    </div>
+                                                                                                    
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información de la tecnología de generación de energía (aplica para generación basada en inversores)</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="6" class="col-md-4 labelTextCenterBold">Si es Solar FV</td>
+                                            <td colspan="3" class="col-md-4 labelTextCenterBold">Fecha de instalación</td>
+                                            <td colspan="3" class="col-md-4 labelTextCenterBold">Posee relé de flujo inverso</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <label for="TxtPotenciaXPanel">Potencia por panel (W):</label> <input id="TxtPotenciaXPanel" class="form-control solo-decimal" maxlength="5" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <label for="TxtNPaneles">Número de paneles:</label> <input id="TxtNPaneles" class="form-control solo-numero" maxlength="6" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <div class="input-group date" id="DivFechaInstalacionPaneles" style="width: 100%;">
+                                                        <input type="text" id="TxtFechaInstalacionPaneles" class="form-control" required="" disabled="">
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdltieneReleFInverso" class="form-control" required="" disabled=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Capacidad en DC(kW DC)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Potencia total en AC(kW AC)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Voltaje salida del Inversor (V)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Número de fases</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtCapacidadDC" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtPotenciaTotAC" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtVoltajeSalida" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlNfases" class="form-control" required="" disabled="">
+                                                        <option value="">Seleccione</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="9" class="col-md-9 labelTextCenterBold">Indicar los elementos de protección, control y maniobra</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Cumple estándar IEEE 1547­-2003</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="9">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <textarea rows="2" id="TxtElementosProteccion" maxlength="300" class="form-control" required="" disabled=""></textarea><div><span id="TxtElementosProteccionremainingLength">300</span> restantes</div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCumpleE1547Inversores" class="form-control" required="" disabled=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="9" class="col-md-9 labelTextCenterBold">Especificar las características del inversor</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Cumple estándar UL 1741­-2010</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="9">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <textarea rows="2" id="TxtCarracteristicaInver" maxlength="300" class="form-control" required="" disabled=""></textarea><div><span id="TxtCarracteristicaInverremainingLength">300</span> restantes</div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCumpleU1741Inversores" class="form-control" required="" disabled=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información de la tecnología de generación de energía NO basada en inversores</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Generador</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Fabricante del Generador</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Modelo del generador</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Voltaje del generador (V)</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtGenerador" class="form-control" maxlength="100" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtFabricanteGene" class="form-control" maxlength="100" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtModeloGene" class="form-control" maxlength="100" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtVoltajeGene" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Potencia nominal (kVA)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Factor de potencia</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Número de fases</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Reactancia subtransitoria xd" (p.u.)</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtPotenciaGene" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtFactorPotenciaGene" class="form-control solo-decimal" min="0" max="1" maxlength="5" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlNfasesGene" class="form-control" required="" disabled="">
+                                                        <option value="">Seleccione</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtReactanciaGene" class="form-control solo-decimal" maxlength="4" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Transformador (si aplica)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Potencia nominal (kVA)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Impedancia de C.C.(%)</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Grupo de conexión</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtTrafo" class="form-control" maxlength="30" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtPotenciaTrafo" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtImpedanciaTrafo" class="form-control solo-decimal" maxlength="7" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtGConexionTrafo" class="form-control" maxlength="50" required="" disabled="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="9" class="col-md-9 labelTextCenterBold">Indicar los elementos de protección, control y maniobra</td>
+                                            <td colspan="3" class="col-md-3 labelTextCenterBold">Cumple estándar IEEE 1547­-2003</td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="9">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <textarea rows="2" id="TxtElementosProteccionGene" maxlength="300" class="form-control" required="" disabled=""></textarea><div><span id="TxtElementosProteccionGeneremainingLength">300</span> restantes</div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlCumpleU1741NoInversores" class="form-control" required="" disabled=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Datos del punto de conexión</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="6" class="col-md-6 labelTextCenterBold">Potencia a entregar a la red (kW)</td>
+                                            <td colspan="6" class="col-md-6 labelTextCenterBold">Nivel de tensión (kV)</td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtPotenciaEntregada" class="form-control solo-decimal" maxlength="7" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="6">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtTensionentregada" class="form-control solo-decimal" maxlength="7" required="">
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información de la tecnología de generación de energía NO basada en inversores</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12">                                    
+                                                <div class="form-group form-group-sm">
+                                                    1.El punto de conexión debe incluir un tipo de protección Anti­Isla, que garantice que no se inyectará energía a la red mientrasésta permanezca desenergizada.
+                                                    2.Adjuntar a la solicitud de conexión el diseño eléctrico de la instalación de acuerdo al RETIE, el cual debe indicar adicionalmente lo siguiente:
+                                                    –El tipo de conexión a tierra tanto para la tecnología de generación como para punto de conexión.
+                                                    –Esquema de proteccionesde voltaje y frecuencia del punto de conexión.
+                                                    3.Para la conexión, deberá ser aportada la declaración de cumplimiento del RETIE o el dictamen de inspección y verificación de cumplimiento del RETIE, según aplique.
+                                                    4.El usuario deberá tener un Certificado de Conformidad de Producto RETIE en ACen el punto de conexión.
+                                                </div> 
+                                            </td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Información del sistema de medición</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12">                                    
+                                                <div class="form-group form-group-sm">
+                                                    Los medidores* deben cumplir con los índices de clase y clase de exactitud establecidos en la Resolución CREG 038 de 2014 o aquella que la modifique, complemente y/o sustituya.
+                                                    Debe anexarse al presente formulario el certificado de calibración emitidio por un organismo acreditado por el ONAC
+                                                </div> 
+                                            </td>
+                                        
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="6" class="col-md-6 labelTextCenterBold">Medidor bidereccional</td>
+                                            <td colspan="6" class="col-md-6 labelTextCenterBold">Medidor tiene perfil horario</td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlMedidorBidirrec" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>
+                                            <td colspan="6">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <select id="DdlMedidorTienePH" class="form-control" required=""><option value="">Seleccione</option><option value="1">Si</option><option value="2">No</option></select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div> 
+                                            </td>                                        
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Proyecciones de energía generada y consumida (kWh­/mes) ­ Información opcional</td>
+                                        </tr>
+                                        <tr class="headerTr">
+                                            <td colspan="12" class="col-md-6 labelTextCenterBold">Proyección de la energía generada por el sistema a entregar a la red del OR por mes (kWh/­mes)</td>                                                                                
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">                                    
+                                                Mes 1    
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 2
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 3
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 4
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 5
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 6
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 7
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 8
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 9
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 10
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 11
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 12
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="1">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes1Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes2Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes3Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes4Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes5Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes6Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes7Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes8Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes9Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes10Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes11Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes12Entrega" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                        </tr>
+
+                                        <tr class="headerTr">
+                                            <td colspan="12" class="col-md-6 labelTextCenterBold">Proyección de la energía generada por el sistema para consumo interno por mes (kWh­/mes)</td>                                                                                
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">                                    
+                                                Mes 1    
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 2
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 3
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 4
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 5
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 6
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 7
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 8
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 9
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 10
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 11
+                                            </td>
+                                            <td colspan="1">
+                                                Mes 12
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="1">                                    
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes1consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes2consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes3consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes4consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes5consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes6consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes7consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes8consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes9consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes10consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes11consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                            <td colspan="1">
+                                                <div class="form-group form-group-sm">
+                                                    <input id="TxtMes12consumo" class="form-control solo-decimal" maxlength="8">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Observaciones (Aclaraciones que desee realizar sobre el proyecto)</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12">
+                                                <div class="form-group form-group-sm">
+                                                    <textarea rows="2" id="TxtObservacion" maxlength="300" class="form-control" required=""></textarea><div><span id="TxtObservacionremainingLength">300</span> restantes</div> 
+                                                    <div class="help-block with-errors"></div>
+                                                </div>   
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="labelTextCenterBold_FondoOscuro">Anexos</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12">
+                                                <div class="form-group form-group-sm">
+                                                    <table id="ListaAnexos" class="table table-bordered" style="margin-bottom:0px;">                        
+                                                        <thead>
+                                                            <tr class="headerTr">
+                                                                 <td colspan="1" class="col-md-1 labelTextCenterBold">Item</td>
+                                                                <td colspan="3" class="col-md-3 labelTextCenterBold">Archivo Adjunto</td>
+                                                                <td colspan="3" class="col-md-3 labelTextCenterBold">Tipo</td>
+                                                                <td colspan="3" class="col-md-3 labelTextCenterBold">Descripción</td>
+                                                                <td colspan="2" class="col-md-2 labelTextCenterBold">Eliminar</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td colspan="1" style="padding: 0px;">
+                                                               
+                                                                </td>
+                                                                <td colspan="3" style="padding: 0px;">
+                                                                    <div class="form-group is-fileinput">
+                                                                        <input id="txtfileupload" type="text" readonly="" class="form-control" placeholder="Seleccionar archivo">
+                                                                        <input type="file" id="fileupload" name="files[]">
+                                                                    </div>
+                                                                </td>
+                                                                <td colspan="3" style="padding: 0px;">
+                                                                    <div class="form-group form-group-sm">
+                                                                        <select id="DdlTipoAnexo" class="form-control"><option value="">Seleccione Tipo</option><option value="1">Diagrama unifilar</option><option value="2">Certificado generador suministrado por el fabricante</option><option value="3">Parametrización de las protecciones  voltaje y frencuencia</option><option value="4">Parametrización de las protecciones  anti-isla</option><option value="5">Autodeclaración RETIE</option><option value="6">Documento dueño o representante legal</option><option value="7">Certificado de tradición y libertad</option><option value="8">Estudio de conexión</option><option value="9">Otro</option></select>
+                                                                        <div id="ErrorDdlTipoAnexo" class="help-block with-errors"></div>
+                                                                    </div>   
+                                                                </td>
+                                                                <td colspan="3" style="padding: 0px;">
+                                                                    <div class="form-group form-group-sm">
+                                                                    
+                                                                        <input id="TxtDescripcionAdjunto" class="form-control" maxlength="100">                                                                    
+                                                                    </div>   
+                                                                </td>
+                                                                <td colspan="2" style="padding: 0px;">
+                                                                    <a id="BtnSubirAnexo" class="btn btn-primary btn-sm">Subir archivo</a>
+                                                                </td>
+                                                            </tr>
+                                                        
+                                                        </tfoot>
+                                                    </table>
+                                                </div>   
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="12">
+                                                <div class="col-xs-6">
+                                                    <button type="button" id="BtnSolGuardar" class="btn btn-raised btn-primary btn-lg">Enviar</button>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <button type="button" id="BtnSolCancelar" class="btn btn-raised btn-primary btn-lg">Cancelar</button>
+                                                </div> 
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div> 
+        </form>
+
+    <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title" style="color: black;" id="DivTituloMensaje"> Información </h3>
+                </div>
+                <div style="color: black;font-size: large;" class="modal-body DivTextoMensaje">
+                    
+                </div>
+                <div class="col-lg-12 DivMensajeObjeto" style="color: black;font-size: medium;">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button id="BtnCerrarModal" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                      
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="MyModalConfirma" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title" id="H1" style="color: black;"> Información </h3>
+                </div>
+                <div style="color: black;font-size: large;" class="modal-body DivTextoMensaje">
+                    
+                </div>
+                <div class="DivGrid">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button id="BtnContinuarModal" type="button" class="btn btn-default" data-dismiss="modal">Continuar</button>
+                    <button id="BtnCancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>                      
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <script src="comun/jquery/jquery-1.12.3.js" type="text/javascript"></script>
+
+    <script src="comun/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="comun/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+    
+    <!-- Custom Theme JavaScript -->
+    <script src="comun/js/sb-admin-2.js" type="text/javascript"></script>
+
+    <script src="comun/fontawesome-markers/fontawesome-markers.min.js" type="text/javascript"></script>
+
+
+    <script src="Resources/JavaScript/material-design/js/ripples.min.js"></script>
+
+    <script src="Resources/JavaScript/material-design/js/material.min.js"></script>
+
+    <script src="comun/js/moment.min.js"></script>
+    <script src="comun/js/bootstrap-datetimepicker.min.js?v=5"></script>
+
+    <script src="comun/js/validator.js" type="text/javascript"></script>
+
+    <script src="script/funcionesJS.js?v=3" type="text/javascript"></script>
+    <script src="script/ProxyJS.js" type="text/javascript"></script>
+    <script src="script/ObjetosJS.js" type="text/javascript"></script>
+    <script src="script/WFConsulta.js?v=3" type="text/javascript"></script>
+
+
+    
+
+
+<div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false" style="display: none;"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title">Procesando...</h4> </div> <div class="modal-body"> <div class="progress progress-striped active"> <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemax="100" style="width: 100%;"></div> </div> </div> </div> </div> </div>
